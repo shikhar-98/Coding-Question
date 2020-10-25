@@ -1,0 +1,61 @@
+import java.util.ArrayList;
+import java.util.Collections;
+class Node 
+{ 
+	int data; 
+	Node left, right; 
+
+	public Node(int item) 
+	{ 
+		data = item; 
+		left = right = null; 
+	} 
+} 
+
+public class BinaryTree 
+{ 
+	static ArrayList<Integer> al=new ArrayList<Integer>();
+	Node root; 
+
+	boolean isBST() { 
+		converttoinorder(root);
+            
+            if(checkarray())
+            {
+                return true;
+            }
+            
+            return false;
+	} 
+
+	
+	public static void converttoinorder(Node root)
+        {
+            if(root.left==null)
+            {
+                return ;
+            }
+            else
+            {
+            converttoinorder(root.left);
+            al.add(root.data);
+            converttoinorder(root.right);
+            }
+
+            
+        }
+        public static boolean checkarray()
+              {
+                  for(int j=1;j<al.size();j++)
+                  {
+                      int curr=al.get(j-1);
+                      int next=al.get(j);
+                      if(!(curr<next))
+                      {
+                          return false;
+                      }
+                  }
+                  return true;
+
+              }
+

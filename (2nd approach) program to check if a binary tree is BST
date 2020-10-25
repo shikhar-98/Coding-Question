@@ -1,0 +1,49 @@
+
+public class Tree
+{
+
+
+       public static int Rootvalue=root.data;
+        
+       public static boolean isBST(Node root)
+        {
+        
+        if(root==null)
+        {
+            return true;
+        }
+        if((checkleft( root.left,root.data) && checkright(root.right,root.data)) && isBST(root.left) && isBST(root.right))
+        {
+         return true;   
+            
+        }
+        else
+        return false;
+        }
+        
+        public static boolean checkleft(Node curr,int value)
+        {
+            if(curr==null)
+            {
+                return true;
+            }
+            if(curr.data<value.data)
+            {
+                return true;
+            }
+           return false; 
+        }
+        public static boolean checkright(Node curr,int value)
+        {
+            if(curr==null)
+            {
+                return true;
+            }
+            if((curr.data>value) && (curr.data<Rootvalue))
+            {
+                return true;
+            }
+           return false; 
+        }
+
+}

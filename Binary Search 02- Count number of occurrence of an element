@@ -1,0 +1,56 @@
+main()
+{
+int first=first(arr,x,length);
+if(first==-1)
+{means element is
+ not found in array, so return -1 to main function}
+
+else{
+int last=last(arr,x,length);
+int frequency=last-first+1;
+return frequency;
+}
+
+}
+
+int first(int arr[],int x,int length)
+{
+l=0;r=length-1;var=-1;(intentionally -1, because yeh koi bhi index ni hoga array ka, if 0 karta then issue tha)
+int mid=(l+r)/2;
+
+while(l<=r)
+{
+if(arr[m]==x && arr[m-1]<x || arr[m-1]==x)
+{
+var=x;
+r=m-1;
+}
+else if(arr[m]>x)
+{r=m-1;}
+
+else if(arr[m]<x)
+{l=m+1;}
+}
+return var;
+}
+
+int last(int arr[],int x,int length)
+{
+l=0;r=length-1;var=-1;(intentionally -1, because yeh koi bhi index ni hoga array ka, if 0 karta then issue tha)
+int mid=(l+r)/2;
+
+while(l<=r)
+{
+if(arr[m]==x && arr[m+1]>x || arr[m+1]==x)
+{
+var=x;
+l=m+1;
+}
+else if(arr[m]>x)
+{r=m-1;;}
+
+else if(arr[m]<x)
+{l=m+1;}
+}
+return var;
+}

@@ -1,0 +1,54 @@
+
+import java.util.*;
+import java.io.*;
+
+class Node {
+    Node left;
+    Node right;
+    int data;
+    
+    Node(int data) {
+        this.data = data;
+        left = null;
+        right = null;
+    }
+}
+
+class Solution {
+
+	/*
+    class Node 
+    	int data;
+    	Node left;
+    	Node right;
+	*/
+    static HashSet<Node> hset = new Hashset<Node>();
+    static int flag=0;
+
+	public static Node lca(Node curr, int a, int b) 
+    {
+      if((curr.data==a || curr.data==b) && flag==0)
+      {
+          hset.add(curr);
+          flag=1;
+          return null;
+      } 
+      else if((curr.data==a || curr.data==b) && flag==1)
+      {
+          if(hset.contains(curr))
+          {
+              return curr;
+          }
+          
+      } 
+      else if (curr==null)
+      {
+          return null;
+      }
+
+      lca(curr.left,a,b);
+      lca(curr.right,a,b);
+      
+    }
+
+	public static Node insert(Node root, int data) {

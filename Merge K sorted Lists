@@ -1,0 +1,37 @@
+public class Solution {
+    public ListNode mergeKLists(ArrayList<ListNode> alist) // means every index of arraylist has index head of differnt linked list
+    {
+        ListNode dummy=new ListNode(-1);
+        ListNode head=dummy;
+        PriorityQueue<ListNode> minheap=new PriorityQueue<ListNode>(100, new Comparator<ListNode>()
+        {
+            public int compare(ListNode a,ListNode b)
+            {
+                return a.val-b.val;
+            }
+        });
+    
+        for(int i=0;i<alist.size();i++)
+        {
+            minheap.add(alist.get(i));
+        }
+        // time complexity (NLOGK)
+        while((!minheap.isEmpty()))
+        {
+            
+            ListNode l = minheap.poll();
+            dummy.next = l;
+            
+            if(l.next != null)
+            {
+                minheap.add(l.next);
+            }
+            dummy = dummy.next;
+        }
+        
+        return head.next;
+        
+        
+    }
+}
+

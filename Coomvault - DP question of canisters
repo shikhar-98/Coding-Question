@@ -1,0 +1,33 @@
+class SolutionMain 
+{
+	public static int calculate(int k,int m,int n,int[] dp)
+	{
+		if(k<0)
+		{
+			return Integer.MAX_VALUE;// this will resolve cases such as when k=2,then it will not take alpha as then it will return a very bif integer vallue and since we are taking minimum so,iss tareeke se hum is case ko daba denge.
+		}
+		if(k==0 || m==0 || n==0)
+		{
+			return 0;
+		}
+		if(dp[k]!=-1)
+		{
+			return dp[k];
+		}
+		int temp= 1+Math.min(calculate(k-5,m-1,n,dp),calculate(k-1,m,n-1,dp));
+		dp[k]=temp;
+		return temp;
+	
+	}
+    
+	public static void main (String[] args) {
+		Scanner sc= new Scanner(System.in);
+		int a=sc.nextInt();
+		int b=sc.nextInt();
+		int c=sc.nextInt();
+		int[] dp=new int[a+1];
+		Arrays.fill(dp,-1);
+		int d=calculate(a,b,c,dp);
+		System.out.println(d);
+	}
+  

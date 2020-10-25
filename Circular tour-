@@ -1,0 +1,69 @@
+class Station{
+    int petrol,dist;
+    public Station(int petrol,int dist )
+    {
+        this.petrol=petrol;
+        this.dist=dist;
+        
+    }
+}
+ 
+
+ class Solution {
+    static ArrayList<Station> alist=new ArrayList<Station>();
+    
+   public static void converttooned(int[][] arrays)
+   {
+       for(int i=0;i<arrays.length;i++)
+       {
+           alist.add(new Station(arrays[i][0],arrays[i][1]));
+       }
+   } 
+   public static int checkstatus(ArrayList<Station> alist, int i)
+   {
+       int netpetrol=0;
+       int petrolintank=0;
+       int n=alist.size();
+       Station current = alist.get(i);
+       while(current.dist>current.petrol)
+       {
+            current = alist.get(i++);
+       }
+ 
+ 
+ 
+ 
+ 
+ 
+       for(int j=i;j<i+n;j++)
+       {
+           extrapetrolleft=netpetrol;  //2
+ 
+           Station station=alist.get(i%n);
+ 
+           int currentpetrol=station.petrol-station.dist;//
+ 
+           netpetrol=currentpetrol + extrapetrolleft; //
+           if(netpetrol<=0)
+           {
+               return -1;
+           }
+       }
+ 
+ 
+       return i;
+   }
+ 
+    static int truckTour(int[][] arrays) {
+        converttooned(arrays);
+        int initialStation=0;
+        int result =checkstatus(alist,initialStation);
+        while( result == -1 )
+       {
+           result= checkstatus(alist,initialStation++);
+       }
+ 
+        return result;
+    }
+ 
+ 

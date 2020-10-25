@@ -1,0 +1,44 @@
+int getMaxWidth(Node root)
+    {
+        if (root == null)  // this line is important
+            return 0;
+       Queue<Node> q1=new LinkedList<Node>();
+       Queue<Node> q2=new LinkedList<Node>();
+       
+       q1.add(root);
+       int s=0;
+       while((!q1.isEmpty()) || (!q2.isEmpty()))
+       {
+           while(!q1.isEmpty())
+           {
+               if(s<q1.size())
+               {
+                   s=q1.size();
+               }
+               Node temp=q1.poll();
+               if(temp.left!=null)// this line was important
+                {q2.add(temp.left);}
+              
+               if(temp.right!=null)
+               {q2.add(temp.right);}
+           }
+           while(!q2.isEmpty())
+           {
+               if(s<q2.size())
+               {
+                   s=q2.size();
+               }
+               
+               Node temp=q2.poll();
+              if(temp.left!=null)
+                {q1.add(temp.left);}
+              
+               if(temp.right!=null)
+               {q1.add(temp.right);};
+               
+           }
+       }
+       
+       return s;
+       
+    }

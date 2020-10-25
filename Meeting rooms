@@ -1,0 +1,45 @@
+public class Solution {
+    public int solve(int[][] arrays) {
+        Arrays.sort(arrays,new Comparator<int[]>()
+        {
+        public int compare(int[] ob1, int[] ob2)
+        {
+            return ob1[0]-ob2[0];
+            }
+            });
+            
+            
+            
+        PriorityQueue<int[]> minheap = new PriorityQueue<int[]>( new Comparator<int[]>(){
+        public int compare(int[] ob1, int[] ob2)
+        {
+            return ob1[1]-ob2[1];
+            }
+            });
+        
+        minheap.add(arrays[0]);// now mai 2D array se 1D array s=mei khel raha hu.
+        for(int i=1;i<arrays.length;i++)
+        {
+            int[] earliestarray = minheap.poll(); //  understand these two lines
+            int[] currentarray = arrays[i];  // here i have got array at index 1
+        
+            // now i will compare 0th index of currentarray (ie 5) with 1st index if earliest array(ie 30)
+            if(currentarray[0]>earliestarray[1])
+            {
+                earliestarray[1]=currentarray[1];
+            }
+            else
+            {
+                minheap.add(arrays[i]);
+            }
+            
+            
+            minheap.add(earliestarray);
+            
+        }
+        
+        return minheap.size();
+            
+            
+    }
+}

@@ -1,0 +1,28 @@
+public class Solution {
+    public int maxp3(int[] A) {
+        int l= A.length;
+        Arrays.sort(A);
+        int count =0;
+        int i=l-1,j=l-2,k=l-3;
+        int result=A[i]*A[j]*A[k];
+        
+        for(int o=0;o<l;o++)
+        {
+            if(A[o]<0)
+            {
+                count++;
+            }
+        }
+        if(count>=2)
+        {
+            int x=0;int y=1;
+            int result2=A[i]*A[x]*A[y];
+            result=Math.max(result,result2);
+        }
+        
+        
+        
+        
+        return result;
+    }
+}
